@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Authenticate } from '../../../../../data-models/src/lib/data-models.module';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'learning-nx-login-form',
@@ -7,12 +8,22 @@ import { Authenticate } from '../../../../../data-models/src/lib/data-models.mod
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent implements OnInit {
-  @Output() submit = new EventEmitter<Authenticate>();
+
+  @Output() submitForm = new EventEmitter<Authenticate>();
+
+  loginForm = new FormGroup({
+    username: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required])
+  });
+
   constructor() {}
 
   ngOnInit(): void {}
 
-  login(authenticate: Authenticate) {
-    this.submit.emit(authenticate);
+  login() {
+    this.submitForm.emit({
+      username: this.loginForm.value.username,
+      password: this.loginForm.value.password
+    } as Authenticate);
   }
 }

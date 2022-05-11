@@ -5,11 +5,15 @@ import { AppComponent } from './app.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { RouterModule } from '@angular/router';
 import { AuthModule, authRoutes } from '@learning-nx/auth';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NxModule } from '@nrwl/angular';
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    //NxModule.forRoot(),
     RouterModule.forRoot([{path: 'auth', children: authRoutes}], { initialNavigation: 'enabledBlocking' }),
     AuthModule
   ],
