@@ -1,2 +1,2 @@
-<learning-nx-layout-toolbar [dataSet]="{user$: user$}"></learning-nx-layout-toolbar>
+<learning-nx-layout-toolbar [dataSet]="layoutData" (logOutEvent)="logOut($event)"></learning-nx-layout-toolbar>
 <ng-content></ng-content>
